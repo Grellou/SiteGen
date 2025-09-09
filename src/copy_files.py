@@ -25,22 +25,12 @@ def copy_directory_recursive(source_path, dest_path):
             copy_directory_recursive(source_item_path, dest_item_path)
 
 
-def copy_static_to_public():
-    """
-    Manages the full process of copying the static directory to public.
-    """
+def copy_static_to_docs():  # Renamed function
     source_dir = "static"
-    dest_dir = "public"
+    dest_dir = "docs"  # Changed from "public" to "docs"
 
-    # 1. Clean the public directory if it exists
     if os.path.exists(dest_dir):
-        print(f"Deleting directory: {dest_dir}")
         shutil.rmtree(dest_dir)
 
-    # 2. Recreate the public directory
-    print(f"Creating directory: {dest_dir}")
     os.mkdir(dest_dir)
-
-    # 3. Start the recursive copy from static to public
-    print(f"Copying static files from '{source_dir}' to '{dest_dir}'")
     copy_directory_recursive(source_dir, dest_dir)
